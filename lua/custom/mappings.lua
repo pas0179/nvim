@@ -191,9 +191,14 @@ M.general = {
 
 M.diagnostics = {
   n = {
-    -- ["<leader>transparency"] = { "<cmd>TroubleToggle<cr>", "󰔫 Toggle warnings" },
+    ["<leader>xx"] = { "<cmd>TroubleToggle<cr>", "󰔫 Toggle warnings" },
     ["<leader>td"] = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME,BUG,TEST,NOTE<cr>", " Todo/Fix/Fixme" },
-    -- ["<leader>el"] = { "<cmd>ErrorLensToggle<cr>", "󱇭 Toggle error lens" },
+    ["<leader>xxd"] = {"<cmd>TroubleToggle document_diagnostics<cr>", "󰔫 Toggle document diagnostics" },
+    ["<leader>xw"] = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "󰔫 Toggle workspace diagnostics" },
+    ["<leader>xq"] = {"<cmd>TroubleToggle quickfix<cr>", "󰔫 Toggle quickfix" },
+    ["<leader>xl"] = {"<cmd>TroubleToggle loclist<cr>", "󰔫 Toggle loclist" },
+    ["<leader>xr"] = {"<cmd>TroubleToggle lsp_references<cr>", "󰔫 Toggle lsp_references" },
+    ["<leader>el"] = { "<cmd>ErrorLensToggle<cr>", "󱇭 Toggle error lens" },
     ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", " Telescope TODO" },
     -- ["<Leader>ll"] = {
     --   function()

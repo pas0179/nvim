@@ -39,6 +39,15 @@ local plugins = {
   -- Spectre
   { "windwp/nvim-spectre", event = "VeryLazy" },
 
+  {
+    "utilyre/sentiment.nvim",
+    event = "VeryLazy",
+    opts = {},
+    init = function()
+      vim.g.loaded_matchparen = 1
+    end,
+  },
+
   -- Telescope
   -- Override Telescope
   {
@@ -168,7 +177,6 @@ local plugins = {
     end,
   },
 
-
   {
     "shellRaining/hlchunk.nvim",
     event = "BufReadPost",
@@ -181,8 +189,14 @@ local plugins = {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     config = function()
-      require("trouble").setup{}
+      require "custom.configs.trouble"
     end,
+  },
+
+  {
+    "chikko80/error-lens.nvim",
+    ft = "python",
+    config = true,
   },
 
   {
@@ -364,8 +378,8 @@ local plugins = {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -376,13 +390,13 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
     "mfussenegger/nvim-dap",
     config = function(_, opts)
-      require("core.utils").load_mappings("dap")
-    end
+      require("core.utils").load_mappings "dap"
+    end,
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -394,7 +408,7 @@ local plugins = {
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap_python")
+      require("core.utils").load_mappings "dap_python"
     end,
   },
 
@@ -463,7 +477,7 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
     },
     opts = overrides.nvimtree,
   },
@@ -612,7 +626,6 @@ local plugins = {
       require("compiler").setup(opts)
     end,
   },
-
 }
 
 return plugins
